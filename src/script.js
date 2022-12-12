@@ -42,6 +42,8 @@ const renderList = (list) => {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       console.log(e.target[0].value);
+      console.log(e.target.parentNode.parentNode.id);
+      //Hantera put till server här, skicka med value, id .
     });
   });
 };
