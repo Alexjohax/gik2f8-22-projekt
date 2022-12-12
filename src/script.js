@@ -16,11 +16,11 @@ window.addEventListener("load", () => {
 
 const searchInput = document.getElementById("searchField");
 searchInput.addEventListener("keyup", (e) => {
-  pokemonList.filter(({ name }) => {
-    const searchTerm = e.target.value.toLowerCase();
-    console.log(pokemonList[name.toLowerCase().indexOf(searchTerm)]);
-    return name.toLowerCase().indexOf(searchTerm) >= 0;
-  });
+  const searchTerm = e.target.value.toLowerCase();
+  const searchResults = pokemonList.filter(
+    ({ name }) => name.toLowerCase().indexOf(searchTerm) >= 0
+  );
+  console.log(searchResults);
 });
 
 const button = document.getElementById("button");
