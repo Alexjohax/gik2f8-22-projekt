@@ -4,6 +4,14 @@ const PokemonListItem = (pokemon) => {
       last:border-b-0 border-b border-indigo-500 cursor-pointer flex justify-between items-center">
       <p>${pokemon.name}</p>
       <img src="${pokemon.images.small}" width="150" height="200" />
+      <div>
+      <form>
+        <label for="comment">Lägg till en kommentar</label>
+        <input type="text" id="comment" name="comment" placeholder="Skriv något..." />
+        <button>Add to collection</button>
+      </form>
+      </div>
+      
       </li>
       `;
 
