@@ -12,6 +12,14 @@ window.addEventListener("load", () => {
   });
 });
 
+const searchInput = document.getElementById("searchField");
+searchInput.addEventListener("keyup", (e) => {
+  pokemonList.filter(({ name }) => {
+    const searchTerm = e.target.value.toLowerCase();
+    return name.toLowerCase().indexOf(searchTerm) >= 0;
+  });
+});
+
 const button = document.getElementById("button");
 
 button.addEventListener("click", () => {

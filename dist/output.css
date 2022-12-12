@@ -621,6 +621,10 @@ video {
   color: rgb(20 83 45 / var(--tw-text-opacity));
 }
 
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 /*  npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch */
 
 @media (min-width: 768px) {
