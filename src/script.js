@@ -35,6 +35,15 @@ const renderList = (list) => {
   list.length > 0 &&
     searchField.value &&
     root.insertAdjacentHTML("beforeend", PokemonList(list));
+
+  const forms = document.querySelectorAll(".submitForm");
+  console.log(forms);
+  forms.forEach((form) => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      console.log(e.target);
+    });
+  });
 };
 
 const button = document.getElementById("button");
