@@ -21,7 +21,21 @@ searchInput.addEventListener("keyup", (e) => {
     ({ name }) => name.toLowerCase().indexOf(searchTerm) >= 0
   );
   console.log(searchResults);
+  renderList(searchResults);
 });
+
+const renderList = (list) => {
+  const existingElement = document.getElementById("thelist");
+  const root = document.getElementById("root");
+
+  if (existingElement) {
+    existingElement.remove();
+  }
+
+  list.length > 0 &&
+    searchField.value &&
+    root.insertAdjacentHTML("beforeend", PokemonList(list));
+};
 
 const button = document.getElementById("button");
 
