@@ -75,8 +75,32 @@ function saveTask(name, comment, image) {
 const button = document.getElementById("button");
 
 button.addEventListener("click", () => {
+  renderPokemon();
   console.log(pokemonList[0]);
   pokemonList.filter(({ name }) => {
     console.log(name);
   });
 });
+
+function renderPokemon() {
+  api.getAll().then((pokemons) => {
+    const modal = document.getElementById("slideshow");
+    pokemons.forEach((pokemon) => {
+      modal.insertAdjacentHTML(
+        "beforeend",
+        `<div class="flex flex-col gap-2 mx-3">
+      <p>${pokemon.name}</p>
+      <img src="${pokemon.image}" alt="${pokemon.name}" width="300" height="500" />
+      </div>`
+      );
+    });
+    /// test för slider
+    $(document).ready(function () {
+      $(".slideshow").slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      });
+    });
+  });
+}
