@@ -82,6 +82,7 @@ button.addEventListener("click", () => {
   });
 });
 
+/* Renderar pokemons på modalens div, slideshow */
 function renderPokemon() {
   api.getAll().then((pokemons) => {
     const modal = document.getElementById("slideshow");
@@ -95,6 +96,7 @@ function renderPokemon() {
       );
     });
     /// test för slider
+    /* Sätter slick slider på div med namnet slideshow */
     $(document).ready(function () {
       $(".slideshow").slick({
         centerMode: true,
