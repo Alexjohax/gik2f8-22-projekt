@@ -41,7 +41,7 @@ const renderList = (list) => {
   forms.forEach((form) => {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      console.log(e.target);
+      console.log(e.target[0].value);
     });
   });
 };
