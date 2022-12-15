@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GIK2F8 - Grupp 22 - PokeStaRz</title>
     <link href="/dist/output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick-theme.css"
+    />
   </head>
   <body class="bg-gradient-to-tr from-sky-400 to-lime-500 h-screen">
     <h1 class="text-6xl text-green-900 text-center mt-4 mb-7">Sök Pokémon</h1>
@@ -23,6 +33,22 @@
       <p id="loading">Please wait, the pokemons are loading...</p>
     </main>
     <button id="button">Console log pokemons</button>
+    <div
+      id="modal"
+      class="modal fixed z-10 py-24 bg-slate-500 bg-opacity-40 items-center justify-center left-0 top-0 w-full h-full hidden overflow-auto"
+    >
+      <span class="closeBtn float-right">&times;</span>
+      <div id="slideshow" class="slideshow"></div>
+    </div>
+
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
     <script src="./api/api.js"></script>
     <script src="./server/server.js"></script>
     <script src="./components/PokemonListItem.js"></script>

@@ -75,8 +75,59 @@ function saveTask(name, comment, image) {
 const button = document.getElementById("button");
 
 button.addEventListener("click", () => {
+  renderPokemon();
   console.log(pokemonList[0]);
   pokemonList.filter(({ name }) => {
     console.log(name);
   });
 });
+
+/* Renderar pokemons på modalens div, slideshow */
+function renderPokemon() {
+  api.getAll().then((pokemons) => {
+    const modal = document.getElementById("slideshow");
+    pokemons.forEach((pokemon) => {
+      modal.insertAdjacentHTML(
+        "beforeend",
+        `<div class="flex flex-col gap-2 mx-3">
+      <p>${pokemon.name}</p>
+      <img src="${pokemon.image}" alt="${pokemon.name}" width="300" height="500" />
+      </div>`
+      );
+    });
+
+    /// test för slider
+    /* Sätter slick slider på div med namnet slideshow */
+    $(document).ready(function () {
+      $(".slideshow").slick({
+        centerMode: true,
+        centerPadding: "60px",
+        slidesToShow: 3,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: "40px",
+              slidesToShow: 3,
+            },
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: "40px",
+              slidesToShow: 1,
+            },
+          },
+        ],
+      });
+    });
+  });
+}
+//Logik för modal
+const modal = document.getElementById("modal");
+const modalBtn = document.getElementById("modalBtn");
+const closeBtn = document.getElementById("closeBtn");
