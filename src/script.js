@@ -95,6 +95,7 @@ function renderPokemon() {
       </div>`
       );
     });
+
     /// test för slider
     /* Sätter slick slider på div med namnet slideshow */
     $(document).ready(function () {
@@ -126,3 +127,7 @@ function renderPokemon() {
     });
   });
 }
+//Logik för modal
+const modal = document.getElementById("modal");
+const modalBtn = document.getElementById("modalBtn");
+const closeBtn = document.getElementById("closeBtn");
