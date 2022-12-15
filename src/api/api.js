@@ -1,4 +1,3 @@
-// https://api.pokemontcg.io/v2/cards/
 const url = "https://api.pokemontcg.io/v2/cards/";
 
 async function getAll() {

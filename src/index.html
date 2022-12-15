@@ -32,13 +32,21 @@
       <input class="rounded-full p-2 hidden" id="searchField" type="text" />
       <p id="loading">Please wait, the pokemons are loading...</p>
     </main>
-    <button id="button">Console log pokemons</button>
+    <button id="button">Show collection</button>
     <div
       id="modal"
-      class="modal fixed z-10 py-24 bg-slate-500 bg-opacity-40 items-center justify-center left-0 top-0 w-full h-full hidden overflow-auto"
+      class="modal fixed z-10 py-24 bg-slate-500 bg-opacity-40 items-center justify-center left-0 top-0 w-full h-full overflow-auto hidden"
     >
-      <span class="closeBtn float-right">&times;</span>
-      <div id="slideshow" class="slideshow"></div>
+      <div
+        class="modal-content bg-slate-100 m-auto p-5 border border-slate-700 w-4/5"
+      >
+        <span
+          id="closeBtn"
+          class="closeBtn text-2xl z-40 cursor-pointer justify-self-end"
+          >&times;</span
+        >
+        <div id="slideshow" class="slideshow flex flex-wrap gap-2 mt-6"></div>
+      </div>
     </div>
 
     <script

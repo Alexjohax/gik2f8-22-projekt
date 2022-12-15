@@ -1,3 +1,4 @@
+//window.onload = () => renderPokemon();
 let pokemonList = [];
 const searchField = document.getElementById("searchField");
 const loadingText = document.getElementById("loading");
@@ -75,54 +76,32 @@ function saveTask(name, comment, image) {
 const button = document.getElementById("button");
 
 button.addEventListener("click", () => {
+  const modal = document.getElementById("modal");
+  modal.classList.remove("hidden");
+
   renderPokemon();
-  console.log(pokemonList[0]);
-  pokemonList.filter(({ name }) => {
-    console.log(name);
-  });
 });
 
 /* Renderar pokemons på modalens div, slideshow */
 function renderPokemon() {
   api.getAll().then((pokemons) => {
-    const modal = document.getElementById("slideshow");
+    //const modalContent = document.getElementById("modal-content");
+    const slideshow = document.getElementById("slideshow");
     pokemons.forEach((pokemon) => {
-      modal.insertAdjacentHTML(
+      slideshow.insertAdjacentHTML(
         "beforeend",
-        `<div class="flex flex-col gap-2 mx-3">
-      <p>${pokemon.name}</p>
+        `<div class="slide-item flex flex-col flex-1 basis-1/4 gap-2 mx-3">
+      <p class="flex justify-between">${pokemon.name}<span id="${pokemon.id}">&times;</span></p>
       <img src="${pokemon.image}" alt="${pokemon.name}" width="300" height="500" />
+      <p class="comment">${pokemon.comment}</p>
       </div>`
       );
-    });
-
-    /// test för slider
-    /* Sätter slick slider på div med namnet slideshow */
-    $(document).ready(function () {
-      $(".slideshow").slick({
-        centerMode: true,
-        centerPadding: "60px",
-        slidesToShow: 3,
-        responsive: [
-          {
-            breakpoint: 768,
-            settings: {
-              arrows: false,
-              centerMode: true,
-              centerPadding: "40px",
-              slidesToShow: 3,
-            },
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              arrows: false,
-              centerMode: true,
-              centerPadding: "40px",
-              slidesToShow: 1,
-            },
-          },
-        ],
+      const removePokemonBtn = document.getElementById(pokemon.id);
+      removePokemonBtn.addEventListener("click", (e) => {
+        api.remove(e.target.id).then((data) => {
+          slideshow.innerHTML = "";
+          renderPokemon();
+        });
       });
     });
   });
@@ -131,3 +110,17 @@ function renderPokemon() {
 const modal = document.getElementById("modal");
 const modalBtn = document.getElementById("modalBtn");
 const closeBtn = document.getElementById("closeBtn");
+
+closeBtn.addEventListener("click", () => {
+  const slideshow = document.getElementById("slideshow");
+  modal.classList.add("hidden");
+  slideshow.innerHTML = "";
+  console.log("sliden: ", slideshow);
+});
+window.onclick = function (event) {
+  if (event.target == modal) {
+    const slideshow = document.getElementById("slideshow");
+    modal.classList.add("hidden");
+    slideshow.innerHTML = "";
+  }
+};
