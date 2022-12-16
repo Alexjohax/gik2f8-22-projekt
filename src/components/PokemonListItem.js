@@ -10,7 +10,7 @@ const PokemonListItem = (pokemon) => {
       <form class="submitForm flex flex-col">
         <label for="comment">Lägg till en kommentar</label>
         <input class="border border-red-600" type="text" id="comment" name="comment" placeholder="Skriv något..." />
-        <button class="comment-button">Add to collection</button>
+        <button class="comment-button flex justify-center bg-green-400 hover:bg-green-500 text-center text-white  py-2 px-4 rounded-full w-1/4 mt-4 self-end shadow-md  hover:shadow-lg active:bg-white active:shadow-lg transition duration-150 ease-in-out">Add to collection</button>
       </form>
       </div>
       

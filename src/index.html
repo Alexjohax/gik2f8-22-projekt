@@ -17,7 +17,25 @@
       href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick-theme.css"
     />
   </head>
-  <body class="bg-gradient-to-tr from-sky-400 to-lime-500 h-screen">
+  <body
+    class="bg-[url('../src/img/pokemans.gif')] bg-cover bg-full bg-no-repeat bg-center bg-position-center"
+  >
+    <div
+      id="loader"
+      class="fixed flex bg-white top-0 right-0 bottom-0 left-0 z-50 items-center"
+    >
+      <h1
+        class="w-1/2 h-full left-0 bg-[url('../src/img/loading.gif')] bg-cover text-transparent bg-clip-text text-9xl font-bold font"
+      >
+        Please await loading
+      </h1>
+
+      <img
+        class="animate-spin w-1/2"
+        src="/src/img/confused.png"
+        alt="confused pika"
+      />
+    </div>
     <h1 class="text-6xl text-green-900 text-center mt-4 mb-7">Sök Pokémon</h1>
     <main
       id="root"

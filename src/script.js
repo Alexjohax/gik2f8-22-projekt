@@ -14,6 +14,7 @@ window.addEventListener("load", () => {
     console.log(typeof pokemonList);
     searchField.classList.remove("hidden");
     loadingText.classList.add("hidden");
+    loader.classList.add("hidden");
   });
 });
 
