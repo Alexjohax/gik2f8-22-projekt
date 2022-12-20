@@ -31,19 +31,25 @@
         alt="confused pika"
       />
     </div>
-    <h1 class="text-6xl text-green-900 text-center mt-4 mb-7">Sök Pokémon</h1>
+    <h1
+      class="text-8xl text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-900 font-pixelfont text-center mt-4 mb-7"
+    >
+      Sök Pokémon
+    </h1>
     <main
       id="root"
-      class="relative bg-white/40 py-12 px-6 w-full md:w-4/5 mx-auto rounded-lg flex justify-center align-center flex-col gap-2"
+      class="relative bg-white/70 pixel-corners border-black/20 border-4 py-12 px-6 w-full md:w-4/5 mx-auto rounded-lg flex justify-center align-center flex-col gap-2"
     >
       <label
         id="searchFieldLabel"
-        class="text-green-900 text-xl block"
+        class="text-green-900 text-2xl block font-pixelfont"
         for="searchField"
         >Ange sökord</label
       >
       <input class="rounded-full p-2 hidden" id="searchField" type="text" />
-      <p id="loading">Please wait, the pokemons are loading...</p>
+      <p class="font-pixelfont" id="loading">
+        Please wait, the pokemons are loading...
+      </p>
     </main>
     <button id="button" class="hover:scale-110">
       <img
