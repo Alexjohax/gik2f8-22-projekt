@@ -79,7 +79,6 @@ const button = document.getElementById("button");
 button.addEventListener("click", () => {
   const modal = document.getElementById("modal");
   modal.classList.remove("hidden");
-
   renderPokemon();
 });
 
@@ -91,10 +90,10 @@ function renderPokemon() {
     pokemons.forEach((pokemon) => {
       slideshow.insertAdjacentHTML(
         "beforeend",
-        `<div class="slide-item flex flex-col flex-1 basis-1/4 gap-2 mx-3">
-      <p class="flex justify-between">${pokemon.name}<span id="${pokemon.id}">&times;</span></p>
-      <img src="${pokemon.image}" alt="${pokemon.name}" width="300" height="500" />
-      <p class="comment">${pokemon.comment}</p>
+        `<div class="pixel-border slide-item flex justify-evenly mx-auto flex-col basis-1/4 gap-2 px-10">
+          <p class="flex justify-between text-xl uppercase font-bold">${pokemon.name}<i id="${pokemon.id}" class="far fa-trash-alt text-red-600 text-2xl hover:scale-125 hover:-translate-y-2 cursor-pointer"></i></p>
+          <img src="${pokemon.image}" alt="${pokemon.name}" width="300" height="500" class="hover:scale-150 rounded-lg" />
+          <p class="comment">${pokemon.comment}</p>
       </div>`
       );
       const removePokemonBtn = document.getElementById(pokemon.id);
