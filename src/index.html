@@ -51,7 +51,7 @@
         Please wait, the pokemons are loading...
       </p>
     </main>
-    <div class="flex justify-center mt-28 mx-auto">
+    <div class="flex justify-center self-end mt-28 mx-auto">
       <button
         id="button"
         class="justify-self-end self-end rounded-lg hover:scale-150 transition-all duration-500 opacity-30 hover:opacity-100"
@@ -69,10 +69,11 @@
 
     <div
       id="modal"
-      class="modal fixed z-10 py-24 bg-slate-500 bg-opacity-40 items-center justify-center left-0 top-0 w-full h-full overflow-auto hidden"
+      class="modal flex hidden absolute inset-0 bg-black bg-opacity-30 h-full w-full justify-center items-start md:items-center pt-10 md:pt-0"
     >
       <div
-        class="modal-content pixel-border bg-slate-100 m-auto p-5 border border-slate-700 w-4/5"
+        class="modal-content pixel-border opacity-0 transform -translate-y-full scale-150 relative w-10/12 md:w-1/2 h-1/2 md:h-3/4 bg-white rounded shadow-lg transition-transform duration-300 overflow-y-scroll"
+        id="modal-content"
       >
         <span
           id="closeBtn"

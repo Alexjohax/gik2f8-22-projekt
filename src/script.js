@@ -78,8 +78,9 @@ const button = document.getElementById("button");
 
 button.addEventListener("click", () => {
   const modal = document.getElementById("modal");
-  modal.classList.remove("hidden");
+  //modal.classList.remove("hidden");
   renderPokemon();
+  openModal(true);
 });
 
 /* Renderar pokemons på modalens div, slideshow */
@@ -90,9 +91,9 @@ function renderPokemon() {
     pokemons.forEach((pokemon) => {
       slideshow.insertAdjacentHTML(
         "beforeend",
-        `<div class="pixel-border slide-item flex justify-evenly mx-auto flex-col basis-1/4 gap-2 px-10">
+        `<div class="pixel-border slide-item flex justify-evenly mx-auto flex-col basis-1/4 gap-2 px-10 py-10">
           <p class="flex justify-between text-xl uppercase font-bold">${pokemon.name}<i id="${pokemon.id}" class="far fa-trash-alt text-red-600 text-2xl hover:scale-125 hover:-translate-y-2 cursor-pointer"></i></p>
-          <img src="${pokemon.image}" alt="${pokemon.name}" width="300" height="500" class="hover:scale-150 rounded-lg" />
+          <img src="${pokemon.image}" alt="${pokemon.name}" width="300" height="500" class="hover:scale-150 rounded-lg transition-all duration-300 hover:shadow-yellow-400 hover:shadow-2xl" />
           <p class="comment">${pokemon.comment}</p>
       </div>`
       );
@@ -112,15 +113,43 @@ const modalBtn = document.getElementById("modalBtn");
 const closeBtn = document.getElementById("closeBtn");
 
 closeBtn.addEventListener("click", () => {
-  const slideshow = document.getElementById("slideshow");
-  modal.classList.add("hidden");
+  //const slideshow = document.getElementById("slideshow");
+  //modal.classList.add("hidden");
+  openModal(false);
   slideshow.innerHTML = "";
   console.log("sliden: ", slideshow);
 });
 window.onclick = function (event) {
   if (event.target == modal) {
-    const slideshow = document.getElementById("slideshow");
-    modal.classList.add("hidden");
+    //const slideshow = document.getElementById("slideshow");
+    //modal.classList.add("hidden");
+    openModal(false);
     slideshow.innerHTML = "";
   }
 };
+
+/// test
+
+const modal_overlay = document.querySelector("#modal");
+const modalContent = document.querySelector("#modal-content");
+
+function openModal(value) {
+  const modalCl = modalContent.classList;
+  const overlayCl = modal_overlay;
+
+  if (value) {
+    overlayCl.classList.remove("hidden");
+    setTimeout(() => {
+      modalCl.remove("opacity-0");
+      modalCl.remove("-translate-y-full");
+      modalCl.remove("scale-150");
+    }, 100);
+  } else {
+    modalCl.add("-translate-y-full");
+    setTimeout(() => {
+      modalCl.add("opacity-0");
+      modalCl.add("scale-150");
+    }, 100);
+    setTimeout(() => overlayCl.classList.add("hidden"), 300);
+  }
+}
