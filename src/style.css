@@ -13,6 +13,8 @@
 
   --pixel: 0.125rem;
   /* ↑ Pixel size */
+  --primary: rebeccapurple;
+  --secondary: cornflowerblue;
 }
 
 .pixel-border {
