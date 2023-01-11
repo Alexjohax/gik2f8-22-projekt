@@ -26,23 +26,25 @@ app.get("/collection", async (req, res) => {
 
 app.post("/collection", async (req, res) => {
   try {
-    const task = req.body;
+    const pokemon = req.body;
 
     const listBuffer = await fs.readFile("./collection.json");
-    const currentTasks = JSON.parse(listBuffer);
-    let maxTaskId = 1;
-    if (currentTasks && currentTasks.length > 0) {
-      maxTaskId = currentTasks.reduce(
+    const currentPokemons = JSON.parse(listBuffer);
+    let maxPokemonId = 1;
+    if (currentPokemons && currentPokemons.length > 0) {
+      maxPokemonId = currentPokemons.reduce(
         (maxId, currentElement) =>
           currentElement.id > maxId ? currentElement.id : maxId,
-        maxTaskId
+        maxPokemonId
       );
     }
-    const newTask = { id: maxTaskId + 1, ...task };
-    const newList = currentTasks ? [...currentTasks, newTask] : [newTask];
+    const newPokemon = { id: maxPokemonId + 1, ...pokemon };
+    const newList = currentPokemons
+      ? [...currentPokemons, newPokemon]
+      : [newPokemon];
 
     await fs.writeFile("./collection.json", JSON.stringify(newList));
-    res.send(newTask);
+    res.send(newPokemon);
   } catch (error) {
     res.status(500).send({ error: error.stack });
   }
@@ -53,11 +55,11 @@ app.delete("/collection/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const listBuffer = await fs.readFile("./collection.json");
-    const currentTasks = JSON.parse(listBuffer);
-    if (currentTasks.length > 0) {
+    const currentCollection = JSON.parse(listBuffer);
+    if (currentCollection.length > 0) {
       await fs.writeFile(
         "./collection.json",
-        JSON.stringify(currentTasks.filter((task) => task.id != id))
+        JSON.stringify(currentCollection.filter((task) => task.id != id))
       );
       res.send({ message: `Uppgift med id ${id} togs bort` });
     } else {
