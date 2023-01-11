@@ -9,8 +9,8 @@ const PokemonListItem = (pokemon) => {
       <div class="flex-1">
       <form class="submitForm flex flex-col">
         <label for="comment">Lägg till en kommentar</label>
-        <input class="pixel-corners border-black/20 border-4 text-white text-center  " type="text" id="comment" name="comment" placeholder="Skriv något..." />
-        <button class="comment-button pixel-corners    flex justify-center bg-green-400 hover:bg-green-500 text-center text-white  py-2 px-4 rounded-full  mt-4 self-end shadow-md  hover:shadow-lg active:bg-white active:shadow-lg transition duration-150 ease-in-out">Add to collection</button>
+        <input class="pixel-corners border-black/20 border-4 text-black text-center  " type="text" id="comment" name="comment" placeholder="Skriv något..." />
+        <button class="comment-button pixel-corners    flex justify-center bg-green-400 hover:bg-green-500 text-center text-black  py-2 px-4 rounded-full  mt-4 self-end shadow-md  hover:shadow-lg active:bg-black active:shadow-lg transition duration-150 ease-in-out">Add to collection</button>
       </form>
       </div>
       

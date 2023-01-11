@@ -5,9 +5,9 @@ const loadingText = document.getElementById("loading");
 
 const api = new Api("http://localhost:5000/collection");
 
+//Laddar in pokemons från pokemonAPI för att kunna söka och visa dem. I api.js hanteras anropet.
 window.addEventListener("load", () => {
   getAll().then((pokemons) => {
-    //localStorage.setItem("pokeList", JSON.stringify(pokemons));
     console.log(pokemons);
     pokemonList = pokemons.data;
     console.log(pokemons.data);
@@ -24,7 +24,6 @@ searchInput.addEventListener("keyup", (e) => {
   const searchResults = pokemonList.filter(
     ({ name }) => name.toLowerCase().indexOf(searchTerm) >= 0
   );
-  console.log(searchResults);
   renderList(searchResults);
 });
 
@@ -52,24 +51,21 @@ const renderList = (list) => {
       const image =
         e.target.parentNode.previousSibling.previousSibling.children[1].src;
 
-      //console.log(e.target[0].value);
-      console.log(name, comment, image);
-      saveTask(name, comment, image);
-      //Hantera put till server här, skicka med value, id .
+      savePokemon(name, comment, image);
     });
   });
 };
 
-///test för api save osv
-function saveTask(name, comment, image) {
-  const task = {
+///Sparar pokemon till vår collection
+function savePokemon(name, comment, image) {
+  const Pokemon = {
     name: name,
     comment: comment,
     image: image,
   };
-  api.create(task).then((task) => {
-    if (task) {
-      console.log(task);
+  api.create(Pokemon).then((Pokemon) => {
+    if (Pokemon) {
+      console.log(Pokemon);
     }
   });
 }
@@ -77,16 +73,14 @@ function saveTask(name, comment, image) {
 const button = document.getElementById("button");
 
 button.addEventListener("click", () => {
-  const modal = document.getElementById("modal");
-  //modal.classList.remove("hidden");
   renderPokemon();
   openModal(true);
 });
 
 /* Renderar pokemons på modalens div, slideshow */
+//Kod för att dynamiskt rendera HTML i vår collection.
 function renderPokemon() {
   api.getAll().then((pokemons) => {
-    //const modalContent = document.getElementById("modal-content");
     const slideshow = document.getElementById("slideshow");
     pokemons.forEach((pokemon) => {
       slideshow.insertAdjacentHTML(
@@ -97,6 +91,7 @@ function renderPokemon() {
           <p class="comment">${pokemon.comment}</p>
       </div>`
       );
+      //Kod för att ta bort pokemon ur collection
       const removePokemonBtn = document.getElementById(pokemon.id);
       removePokemonBtn.addEventListener("click", (e) => {
         api.remove(e.target.id).then((data) => {
@@ -113,22 +108,16 @@ const modalBtn = document.getElementById("modalBtn");
 const closeBtn = document.getElementById("closeBtn");
 
 closeBtn.addEventListener("click", () => {
-  //const slideshow = document.getElementById("slideshow");
-  //modal.classList.add("hidden");
   openModal(false);
   slideshow.innerHTML = "";
   console.log("sliden: ", slideshow);
 });
 window.onclick = function (event) {
   if (event.target == modal) {
-    //const slideshow = document.getElementById("slideshow");
-    //modal.classList.add("hidden");
     openModal(false);
     slideshow.innerHTML = "";
   }
 };
-
-/// test
 
 const modal_overlay = document.querySelector("#modal");
 const modalContent = document.querySelector("#modal-content");
